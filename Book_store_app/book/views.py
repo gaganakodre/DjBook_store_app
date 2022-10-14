@@ -42,6 +42,9 @@ class BookAPIView(GenericAPIView):
 
     @verify_token
     def post(self, request):
+        """
+        method to add the book from the admin
+        """
         try:
 
             serializer = BookSerializer(data=request.data)
@@ -58,6 +61,9 @@ class BookAPIView(GenericAPIView):
 
     @verify_token
     def put(self, request):
+        """
+        method to modify the book from the admin
+        """
         try:
             book = Book.objects.get(id=request.data.get("id"))
             serializer = BookSerializer(instance=book, data=request.data, partial=True)
@@ -74,6 +80,9 @@ class BookAPIView(GenericAPIView):
 
     @verify_token
     def delete(self, request):
+        """
+        method to delete the added book from the admin
+        """
         try:
             book = Book.objects.get(id=request.data.get("id"))
             book.delete()

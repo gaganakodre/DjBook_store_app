@@ -13,6 +13,9 @@ class JwtService:
         return jwt.encode(data, "secret", algorithm="HS256")
 
     def decode(self, token):
+        """
+        decoding the token aftre getting the encoded token usind decode method
+        """
         try:
             return jwt.decode(token, "secret", algorithms="HS256")
         except jwt.exceptions.PyJWTError as e:

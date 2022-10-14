@@ -13,13 +13,18 @@ from book_store import settings
 
 
 class UserRegistration(APIView):
+    """
+    class used to register for the user
+    """
 
     def post(self, request):
+        """
+        this method is used to create the user for the registration
+        """
         try:
             serializer = UserSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
-            serializer.save()  # serializing the data after validation
-            # jwt_encode = JwtService()
+            serializer.save()  
             token = JwtService().encode({"user_id": serializer.data.get(
                 "id"), "username": serializer.data.get("username")})
             send_mail(
@@ -40,8 +45,14 @@ class UserRegistration(APIView):
         
 
 class UserLogin(APIView):
+    """
+    class is used for the user login
+    """
 
     def post(self, request):
+        """
+        using the post method user can login by giving the credentials
+        """
         
         try:
             user = authenticate(**request.data)
@@ -57,6 +68,9 @@ class UserLogin(APIView):
 
 
 class VerifyToken(APIView):
+    """
+    this class to chek the user is logged in or not with correct token
+    """
     def get(self, request, token):
         try:
             decoded_data = JwtService().decode(token)

@@ -2,6 +2,9 @@ from user.jwt_service import JwtService
 
 
 def verify_token(function):
+    """
+    decorator method which is used to get the token in the api
+    """
     def wrapper(self, request):
         token = request.headers.get("Token")
         if not token:

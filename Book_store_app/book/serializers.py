@@ -1,5 +1,3 @@
-from asyncore import write
-from distutils.log import error
 from rest_framework import serializers
 from .models import Book
 from user.models import User

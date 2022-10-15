@@ -5,6 +5,9 @@ from .jwt_service import JwtService
 
 
 class User(AbstractUser):
+    """
+    model class is using to create the custom model using abstractuser
+    """
     phone_number = models.BigIntegerField(default=0)
     location = models.CharField(max_length=255,default="blank")
     is_verified = models.BooleanField(default=False)

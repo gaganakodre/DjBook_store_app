@@ -40,7 +40,7 @@ class BookAPIView(GenericAPIView):
     """
     
 
-    @verify_token
+    verify_token
     def post(self, request):
         """
         method to add the book from the admin
